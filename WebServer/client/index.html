@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Settings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/resources/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+    	body{
+		    margin-top:20px;
+		    color: #FFFFFF;
+		    text-align: left;
+		    background-color: #303030;
+		}
+		.main-body {
+		    padding: 15px;
+		}
+		.nav-link {
+		    color: #FFFFFF;
+		}
+		.nav-link:hover {
+  			color: #000000;
+		}
+		.card {
+		    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+		}
+		.card {
+		    position: relative;
+		    display: flex;
+		    flex-direction: column;
+		    min-width: 0;
+		    word-wrap: break-word;
+		    background-color: #424242;
+		    background-clip: border-box;
+		    border: 0 solid rgba(0,0,0,.125);
+		    border-radius: .25rem;
+		}
+		.card-body {
+		    flex: 1 1 auto;
+		    min-height: 1px;
+		    padding: 1rem;
+		}
+		.gutters-sm {
+		    margin-right: -8px;
+		    margin-left: -8px;
+		}
+		.gutters-sm>.col, .gutters-sm>[class*=col-] {
+		    padding-right: 8px;
+		    padding-left: 8px;
+		}
+		.mb-3, .my-3 {
+		    margin-bottom: 1rem!important;
+		}
+		.bg-gray-300 {
+		    background-color: #e2e8f0;
+		}
+		.h-100 {
+		    height: 100%!important;
+		}
+		.shadow-none {
+		    box-shadow: none!important;
+		}
+		.buttons{
+			margin-right: 8px;
+		    margin-top: 12px;
+		}
+		.timeButton{
+			padding-top:3px;
+			padding-bottom:3px;
+			margin:2px;
+			font-size:35px;
+			text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+		}
+    </style>
+    <style data="sliderTHday" type="text/css">
+        .h-day-slide::-webkit-slider-thumb {
+            border: .5px solid #000000;
+            height: 23px;
+            width: 23px;
+            border-radius: 50px;
+            background: #FF0000;
+            cursor: pointer;
+            -webkit-appearance: none;
+        }
+        .s-day-slide::-webkit-slider-thumb {
+            border: .5px solid #000000;
+            height: 23px;
+            width: 23px;
+            border-radius: 50px;
+            background: #FF0000;
+            cursor: pointer;
+            -webkit-appearance: none;
+        }
+        .v-day-slide::-webkit-slider-thumb {
+            border: .5px solid #000000;
+            height: 23px;
+            width: 23px;
+            border-radius: 50px;
+            background: #FF0000;
+            cursor: pointer;
+            -webkit-appearance: none;
+        }
+    </style>
+    <style data="sliderTHnight" type="text/css">
+        .h-night-slide::-webkit-slider-thumb {
+            border: .5px solid #000000;
+            height: 23px;
+            width: 23px;
+            border-radius: 50px;
+            background: #FF0000;
+            cursor: pointer;
+            -webkit-appearance: none;
+        }
+        .s-night-slide::-webkit-slider-thumb {
+            border: .5px solid #000000;
+            height: 23px;
+            width: 23px;
+            border-radius: 50px;
+            background: #FF0000;
+            cursor: pointer;
+            -webkit-appearance: none;
+        }
+        .v-night-slide::-webkit-slider-thumb {
+            border: .5px solid #000000;
+            height: 23px;
+            width: 23px;
+            border-radius: 50px;
+            background: #FF0000;
+            cursor: pointer;
+            -webkit-appearance: none;
+        }
+	</style>
+    <style data="sliderBGday" type="text/css">
+        .h-day-slide {
+            outline: 0;
+            -webkit-appearance: none;
+            height: 8px;
+            width: 100%;
+            background: linear-gradient(to right,hsl(0,100%,50%),hsl(60,100%,50%),hsl(120,100%,50%),hsl(180,100%,50%),hsl(240,100%,50%),hsl(300,100%,50%),hsl(360,100%,50%));
+            border-radius: 20px;
+        }
+        .s-day-slide {
+            outline: 0;
+            -webkit-appearance: none;
+            height: 8px;
+            width: 100%;
+            background: linear-gradient(to right,hsl(0,0%,100%),hsl(0,50%,50%),hsl(0,100%,50%));
+            border-radius: 20px;
+        }
+        .v-day-slide {
+            outline: 0;
+            -webkit-appearance: none;
+            height: 8px;
+            width: 100%;
+            background: linear-gradient(to right,hsl(0,100%,0%),hsl(0,100%,25%),hsl(0,100%,50%));
+            border-radius: 20px;
+        }
+    </style>
+    <style data="sliderBGnight" type="text/css">
+        .h-night-slide {
+            outline: 0;
+            -webkit-appearance: none;
+            height: 8px;
+            width: 100%;
+            background: linear-gradient(to right,hsl(0,100%,50%),hsl(60,100%,50%),hsl(120,100%,50%),hsl(180,100%,50%),hsl(240,100%,50%),hsl(300,100%,50%),hsl(360,100%,50%));
+            border-radius: 20px;
+        }
+        .s-night-slide {
+            outline: 0;
+            -webkit-appearance: none;
+            height: 8px;
+            width: 100%;
+            background: linear-gradient(to right,hsl(0,0%,100%),hsl(0,50%,50%),hsl(0,100%,50%));
+            border-radius: 20px;
+        }
+        .v-night-slide {
+            outline: 0;
+            -webkit-appearance: none;
+            height: 8px;
+            width: 100%;
+            background: linear-gradient(to right,hsl(0,100%,0%),hsl(0,100%,25%),hsl(0,100%,50%));
+            border-radius: 20px;
+        }
+    </style>
+    <style data="colordivday" type="text/css">
+		.dayColor {
+			border-radius: 15px;
+			height: 150px;
+			background: red
+		}
+	</style>
+    <style data="colordivnight" type="text/css">
+        .nightColor{
+			border-radius: 15px;
+			height: 150px;
+			background: red
+		}
+	</style>
+	<script src="/resources/jquery.min.js"></script>
+	<script src="/resources/bootstrap.min.js"></script>
+	<script src="/resources/main.js"></script>
+</head>
+<body onload="loadJsonFile()">
+<div class="container">
+<div class="row gutters-sm">
+	<div class="col-md-3 d-none d-md-block">
+		<div class="card">
+			<div class="card-body">
+				<nav class="nav flex-column nav-pills nav-gap-y-1">
+					<a href="#color" data-toggle="tab" class="nav-item nav-link nav-link-faded active">
+						Clock Settings
+					</a>
+					<a href="#system" data-toggle="tab" class="nav-item nav-link">
+						System Settings
+					</a>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-8">
+		<div class="card">
+			<div class="card-header border-bottom mb-3 d-flex d-md-none">
+				<ul class="nav nav-tabs card-header-tabs nav-gap-x-1" role="tablist">
+					<li class="nav-item">
+						<a href="#ledsettings" data-toggle="tab" class="nav-link has-icon active"></a>
+					</li>
+				</ul>
+			</div>
+			<div class="card-body tab-content">
+				<div class="tab-pane active" id="color">
+
+					<h6>Clock Settings</h6>
+					<hr>
+					<ul class="nav nav-tabs">
+					  <li class="nav-item">
+					    <a class="nav-link active" data-toggle="tab" href="#day">Day</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" data-toggle="tab" href="#night">Night</a>
+					  </li>
+					</ul>
+					<div id="myTabContent" class="tab-content">
+						<div class="tab-pane fade active show" id="day">
+							<form>
+								<fieldset class="form-group" id="mode-group">
+									<legend>Mode</legend>
+									<div class="form-check">
+										<label class="form-check-label">
+											<input type="radio" class="form-check-input" id="dayOff" value=0 name="optionsRadios" onclick="modeChange(this.value)">
+											Off
+										</label>
+									</div>
+									<div class="form-check">
+										<label class="form-check-label">
+											<input type="radio" class="form-check-input" id="dayStatic" value=1 name="optionsRadios" onclick="modeChange(this.value)">
+											Static
+										</label>
+									</div>
+									<div class="form-check">
+										<label class="form-check-label">
+											<input type="radio" class="form-check-input" id="dayBreathing" value=2 name="optionsRadios" onclick="modeChange(this.value)">
+											Breathing
+										</label>
+									</div>
+									<div class="form-check">
+										<label class="form-check-label">
+											<input type="radio" class="form-check-input" id="dayColorFade" value=3 name="optionsRadios" onclick="modeChange(this.value)">
+											Color fade
+										</label>
+									</div>
+									<div class="form-check">
+										<label class="form-check-label">
+											<input type="radio" class="form-check-input" id="dayRainbow" value=4 name="optionsRadios" onclick="modeChange(this.value)">
+											Moving Rainbow
+										</label>
+									</div>
+									<div class="form-check">
+										<label class="form-check-label">
+											<input type="radio" class="form-check-input" id="dayTest" value=5 name="optionsRadios" onclick="modeChange(this.value)">
+											Test
+										</label>
+									</div>
+									<div class="form-group">
+										<label class="col-form-label" for="inputDefault">Speed</label>
+										<input class="form-control form-control-sm" type="number" placeholder="10.0" id="speed" min="0" max="1000" style="width:25%" onchange="updateSettings()">
+									</div>
+								</fieldset>
+
+								<fieldset class="form-group">
+									<legend>Options</legend>
+									<div class="form-check">
+										<label class="form-check-label">
+											<input class="form-check-input" type="checkbox" id="tfTime" checked="false" onchange="updateSettings()">
+											24 hour time
+										</label>
+										<label class="form-check-label">
+											<input class="form-check-input" type="checkbox" id="nightModeOff" checked="false" onchange="updateSettings()">
+											Disable night mode
+										</label>
+									</div>
+								</fieldset>
+
+								<fieldset class="form-group">
+									<legend>Color</legend>
+									<div class="container">
+										<div class="row justify-content-center">
+											<button  id="dbsa"  type="button" class="btn btn-primary" style="margin:5px;font-size:15px;" onclick="digitPressed(this.id,'day')">Select All</button>
+										</div>
+										<div class="row justify-content-center">
+											<button id="db0" type="button" class="btn btn-secondary timeButton" onclick="digitPressed(this.id,'day')">0</button>
+											<h1> </h1>
+											<button id="db1" type="button" class="btn btn-secondary timeButton" onclick="digitPressed(this.id,'day')">1</button>
+											<h1 style="margin-top:7px;padding:2px;font-size:35px;">:</h1>
+											<button id="db2" type="button" class="btn btn-secondary timeButton" onclick="digitPressed(this.id,'day')">2</button>
+											<h1> </h1>
+											<button id="db3" type="button" class="btn btn-secondary timeButton" onclick="digitPressed(this.id,'day')">4</button>
+											<h1 style="margin-top:7px;padding:2px;font-size:35px;">:</h1>
+											<button id="db4" type="button" class="btn btn-secondary timeButton" onclick="digitPressed(this.id,'day')">5</button>
+											<h1> </h1>
+											<button id="db5" type="button" class="btn btn-secondary timeButton" onclick="digitPressed(this.id,'day')">0</button>
+										</div>
+									</div>
+									<div class="form-check">
+										<label for="customRange1">Hue</label>
+										<input id="dayhSlider" type="range" min="0" max="359" step="1" class="h-day-slide" oninput="sliderChanged('day')">
+									</div>
+									<div class="form-check">
+										<label for="customRange1">Saturation</label>
+										<input id="daysSlider" type="range" min="0" max="100" step="1" class="s-day-slide" oninput="sliderChanged('day')">
+									</div>
+									<div class="form-check">
+										<label for="customRange1">Brightness</label>
+										<input id="dayvSlider" type="range" min="0" max="100" step="1" class="v-day-slide" oninput="sliderChanged('day')">
+									</div>
+									<div class="container">
+										<label class="col-form-label" for="inputDefault">HSB</label>
+										<div class="row">
+											<div class="col-sm">
+												<input type="number" class="form-control" placeholder="Default input" id="inputhday" min="0" max="360" oninput="HSVChanged('day')">
+											</div>
+											<div class="col-sm">
+												<input type="number" class="form-control" placeholder="Default input" id="inputsday" min="0" max="100" oninput="HSVChanged('day')">
+											</div>
+											<div class="col-sm">
+												<input type="number" class="form-control" placeholder="Default input" id="inputvday" min="0" max="100" oninput="HSVChanged('day')">
+											</div>
+										</div>
+										<label class="col-form-label" for="inputDefault">RGB</label>
+										<div class="row">
+											<div class="col-sm">
+												<input type="number" class="form-control" placeholder="Default input" id="inputrday" min="0" max="255" oninput="RGBChanged('day')">
+											</div>
+											<div class="col-sm">
+												<input type="number" class="form-control" placeholder="Default input" id="inputgday" min="0" max="255" oninput="RGBChanged('day')">
+											</div>
+											<div class="col-sm">
+												<input type="number" class="form-control" placeholder="Default input" id="inputbday" min="0" max="255" oninput="RGBChanged('day')">
+											</div>
+										</div>
+									</div>
+								</fieldset>
+							</form>
+							<div id="color-preview" class="dayColor">
+								<h4>&nbsp;</h4>
+								<h4 >&nbsp;</h4>
+							</div>
+
+						</div>
+
+						<div class="tab-pane fade" id="night">
+							<form>
+								<fieldset class="form-group" id="mode-group">
+									<legend>Mode</legend>
+									<div class="form-check">
+										<label class="form-check-label">
+											<input type="radio" class="form-check-input" id="nightOff" value=0 name="optionsRadios" onclick="nightModeChange(this.value)">
+											Off
+										</label>
+									</div>
+									<div class="form-check">
+										<label class="form-check-label">
+											<input type="radio" class="form-check-input" id="nightStatic" value=1 name="optionsRadios" onclick="nightModeChange(this.value)">
+											Static
+										</label>
+									</div>
+									<div class="form-check">
+										<label class="form-check-label">
+											<input type="radio" class="form-check-input" id="nightBreathing" value=2 name="optionsRadios" onclick="nightModeChange(this.value)">
+											Breathing
+										</label>
+									</div>
+									<div class="form-check">
+										<label class="form-check-label">
+											<input type="radio" class="form-check-input" id="nightColorFade" value=3 name="optionsRadios" onclick="nightModeChange(this.value)">
+											Color fade
+										</label>
+									</div>
+									<div class="form-check">
+										<label class="form-check-label">
+											<input type="radio" class="form-check-input" id="nightRainbow" value=4 name="optionsRadios" onclick="nightModeChange(this.value)">
+											Moving Rainbow
+										</label>
+									</div>
+									<div class="form-group">
+										<label class="col-form-label" for="inputDefault">Night Start</label>
+										<input class="form-control form-control-sm" type="time" id="nightStart" style="width:25%; min-width:fit-content;" onchange="updateSettings()">
+										<label class="col-form-label" for="inputDefault">Night End</label>
+										<input class="form-control form-control-sm" type="time" id="nightEnd" style="width:25%; min-width:fit-content;" onchange="updateSettings()">
+									</div>
+								</fieldset>
+
+								<fieldset class="form-group">
+									<legend>Options</legend>
+                                    <div class="form-check">
+										<label class="form-check-label">
+											<input class="form-check-input" type="checkbox" id="NightSeconds" checked="false" onchange="updateSettings()">
+											Night Seconds
+										</label>
+									</div>
+                                    <div class="form-check">
+										<label class="form-check-label">
+											<input class="form-check-input" type="checkbox" id="NightModeTest" checked="false" onchange="updateSettings()">
+											Test Night Mode
+										</label>
+									</div>
+								</fieldset>
+
+								<fieldset class="form-group">
+									<legend>Color</legend>
+									<div class="container">
+										<div class="row justify-content-center">
+											<button  id="nbsa"  type="button" class="btn btn-primary" style="margin:5px;font-size:15px;" onclick="digitPressed(this.id,'night')">Select All</button>
+										</div>
+										<div class="row justify-content-center">
+											<button id="nb0" type="button" class="btn btn-secondary timeButton" onclick="digitPressed(this.id,'night')">0</button>
+											<h1> </h1>
+											<button id="nb1" type="button" class="btn btn-secondary timeButton" onclick="digitPressed(this.id,'night')">1</button>
+											<h1 style="margin-top:7px;padding:2px;font-size:35px;">:</h1>
+											<button id="nb2" type="button" class="btn btn-secondary timeButton" onclick="digitPressed(this.id,'night')">2</button>
+											<h1> </h1>
+											<button id="nb3" type="button" class="btn btn-secondary timeButton" onclick="digitPressed(this.id,'night')">4</button>
+											<h1 style="margin-top:7px;padding:2px;font-size:35px;">:</h1>
+											<button id="nb4" type="button" class="btn btn-secondary timeButton" onclick="digitPressed(this.id,'night')">5</button>
+											<h1> </h1>
+											<button id="nb5" type="button" class="btn btn-secondary timeButton" onclick="digitPressed(this.id,'night')">0</button>
+										</div>
+									</div>
+									<div class="form-check">
+										<label for="customRange1">Hue</label>
+										<input id="nighthSlider" type="range" min="0" max="359" step="1" class="h-night-slide" oninput="sliderChanged('night')">
+									</div>
+									<div class="form-check">
+										<label for="customRange1">Saturation</label>
+										<input id="nightsSlider" type="range" min="0" max="100" step="1" class="s-night-slide" oninput="sliderChanged('night')">
+									</div>
+									<div class="form-check">
+										<label for="customRange1">Brightness</label>
+										<input id="nightvSlider" type="range" min="0" max="100" step="1" class="v-night-slide" oninput="sliderChanged('night')">
+									</div>
+									<div class="container">
+										<label class="col-form-label" for="inputDefault">HSB</label>
+										<div class="row">
+											<div class="col-sm">
+												<input type="number" class="form-control" placeholder="Default input" id="inputhnight" min="0" max="360" oninput="HSVChanged('night')">
+											</div>
+											<div class="col-sm">
+												<input type="number" class="form-control" placeholder="Default input" id="inputsnight" min="0" max="100" oninput="HSVChanged('night')">
+											</div>
+											<div class="col-sm">
+												<input type="number" class="form-control" placeholder="Default input" id="inputvnight" min="0" max="100" oninput="HSVChanged('night')">
+											</div>
+										</div>
+										<label class="col-form-label" for="inputDefault">RGB</label>
+										<div class="row">
+											<div class="col-sm">
+												<input type="number" class="form-control" placeholder="Default input" id="inputrnight" min="0" max="255" oninput="RGBChanged('night')">
+											</div>
+											<div class="col-sm">
+												<input type="number" class="form-control" placeholder="Default input" id="inputgnight" min="0" max="255" oninput="RGBChanged('night')">
+											</div>
+											<div class="col-sm">
+												<input type="number" class="form-control" placeholder="Default input" id="inputbnight" min="0" max="255" oninput="RGBChanged('night')">
+											</div>
+										</div>
+									</div>
+								</fieldset>
+							</form>
+							<div id="night-color-preview" class="nightColor">
+								<h4>&nbsp;</h4>
+								<h4 >&nbsp;</h4>
+							</div>
+						</div>
+					</div>
+
+					<div class="buttons">
+						<button type="button" class="btn btn-primary" onclick="SettingsToFile()">Save Changes</button>
+						<button type="button" class="btn btn-secondary"  onclick="loadJsonFile()">Reset</button>
+					</div>
+				</div>
+				<div class="tab-pane" id="system">
+
+					<h6>System Settings</h6>
+					<hr>
+					<form>
+						<button type="button" class="btn btn-primary">Save Changes</button>
+						<button type="button" class="btn btn-secondary">Reset</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+
+
+</body>
+</html>
