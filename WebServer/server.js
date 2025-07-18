@@ -1,44 +1,59 @@
-var express = require('express');
-var http = require('http');
-var fs = require('fs');
+const express = require("express");
+const fs = require("fs");
+const path = require("path");
 
-var app = express();
+const app = express();
 app.use(express.json());
-// Create an HTTP service.
-http.createServer(app).listen(80);
 
-// Routing Web Pages
-app.get('/', function(req, res){
-    res.sendFile("/home/pi/clock/WebServer/client/index.html");
+app.listen(80, () => {
+  console.log("Express server running on port 80");
 });
-// File Serving
-app.get('/resources/:name', function(req, res){
-    var options = {
-        root:  __dirname + '/client/',
-        dotfiles: 'deny',
-        headers: {'x-timestamp': Date.now(),'x-sent': true}
-    };
-    res.sendFile(req.params.name, options, function (err) {
-        if (err) {
-          console.log(err);
-          res.status(err.status).end();
-        }
-    });
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "index.html"));
 });
-app.get('/json/:name', function(req, res){
-    var options = {
-        root: '/home/pi/clock/',
-        dotfiles: 'deny',
-        headers: {'x-timestamp': Date.now(),'x-sent': true}
-    };
-    res.sendFile(req.params.name, options, function (err) {
-        if (err) {
-          console.log(err);
-          res.status(err.status).end();
-        }
-    });
+
+app.get("/resources/:name", (req, res) => {
+  const options = {
+    root: path.join(__dirname, "client"),
+    dotfiles: "deny",
+    headers: {
+      "x-timestamp": Date.now(),
+      "x-sent": true,
+    },
+  };
+  res.sendFile(req.params.name, options, (err) => {
+    if (err) {
+      console.error(err);
+      res.status(err.status || 500).end();
+    }
+  });
 });
-app.post('/json', function(request, response){
-	response.sendStatus(200);
-	fs.writeFile('/home/pi/clock/settings.json', JSON.stringify(request.body), 'utf8',function(){});
+
+app.get("/json/:name", (req, res) => {
+  const options = {
+    root: "/home/pi/clock/",
+    dotfiles: "deny",
+    headers: {
+      "x-timestamp": Date.now(),
+      "x-sent": true,
+    },
+  };
+  res.sendFile(req.params.name, options, (err) => {
+    if (err) {
+      console.error(err);
+      res.status(err.status || 500).end();
+    }
+  });
+});
+
+app.post("/json", (req, res) => {
+  const filePath = "/home/pi/clock/settings.json";
+  fs.writeFile(filePath, JSON.stringify(req.body), "utf8", (err) => {
+    if (err) {
+      console.error("Failed to write file:", err);
+      return res.sendStatus(500);
+    }
+    res.sendStatus(200);
+  });
 });
